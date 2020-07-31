@@ -35,5 +35,5 @@ kubectl apply -f k8s/
 
 watch -n 2 'curl --header "Host: wai-1.example.com" http://34.72.250.238'
 
-kubectl logs -n wai-1 loggerheading-85c6d6fb48-wrnzd -c whereami -f
+kubectl logs -n wai-1 loggerheading-85c6d6fb48-wrnzd -c loggerheading -f
 ```
