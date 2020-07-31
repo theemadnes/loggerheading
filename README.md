@@ -1,5 +1,6 @@
 # loggerheading
-Log the headers received by a service for debugging purposes
+
+Log the headers received by a service for debugging purposes via Istio traffic mirroring. This assumes the K8s cluster you're using already has Istio installed.
 
 #### set up test service
 
