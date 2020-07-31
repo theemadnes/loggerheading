@@ -6,12 +6,12 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", HelloServer)
+	http.HandleFunc("/", HeaderLoggerServer)
 	http.ListenAndServe(":8080", nil)
 }
 
-func HelloServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+func HeaderLoggerServer(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "OK %s!", r.URL.Path[1:])
 
 	// Loop over header names
 	for name, values := range r.Header {
