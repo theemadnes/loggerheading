@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: whereami
+  namespace: wai-1
+spec:
+  gateways:
+  - whereami-gateway
+  hosts:
+  - 'wai-1.example.com'
+  http:
+  - route:
+    - destination:
+        host: whereami
+        subset: v1
+        #port:
+        #  number: 80
+      weight: 100
+    mirror:
+      host: whereami
+      subset: v2
+    mirror_percent: 100

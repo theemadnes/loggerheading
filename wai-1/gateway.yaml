@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: whereami-gateway
+  namespace: wai-1
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - 'wai-1.example.com'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
