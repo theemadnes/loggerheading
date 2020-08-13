@@ -11,11 +11,11 @@ kubectl label namespace wai-1 istio-injection=enabled --overwrite
 
 git clone https://github.com/theemadnes/gke-whereami.git
 
-kubectl apply -n whereami -f gke-whereami/k8s/configmap.yaml
+kubectl apply -n wai-1 -f gke-whereami/k8s/configmap.yaml
 
-kubectl apply -n whereami -f gke-whereami/k8s/ksa.yaml
+kubectl apply -n wai-1 -f gke-whereami/k8s/ksa.yaml
 
-kubectl apply -n whereami -f gke-whereami/k8s/deployment.yaml
+kubectl apply -n wai-1 -f gke-whereami/k8s/deployment.yaml
 
 kubectl apply -f wai-1/
 
@@ -33,7 +33,9 @@ pack build --builder gcr.io/buildpacks/builder:v1 --publish gcr.io/${PROJECT_ID}
 ```
 kubectl apply -f k8s/
 
+kubectl get pods -n wai-1 --selector=mirror=target
+
 watch -n 2 'curl --header "Host: wai-1.example.com" http://34.72.250.238'
 
-kubectl logs -n wai-1 loggerheading-85c6d6fb48-wrnzd -c loggerheading -f
+kubectl logs -n wai-1 -l mirror=target -c loggerheading -f
 ```

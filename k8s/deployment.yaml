@@ -14,6 +14,7 @@ spec:
       labels:
         app: whereami
         version: v2
+        mirror: target
     spec:
       serviceAccountName: whereami-ksa
       containers:
